@@ -34,14 +34,14 @@ num_favorites = []
 in_reply_to = []
 
 def search_request(search_term):
-    for x in range(2):
+    for x in range(1):
         if x == 0:
             end_id = None
         try:
-            response = api.search(search_term, lang = "en", count = 100, max_id = end_id)['statuses']
+            response = api.search(search_term-filter:retweets, lang = "en", count = 100, max_id = end_id, geocode="39.82,98.57,3000km")['statuses']
             for tweet in response:
                 tweet_text = tweet['text']
-                if search_term in tweet_text:
+                if (search_term in tweet_text) and :
                     word.append(search_term)
                     time.append(tweet['created_at'])
                     text.append(tweet['text'])
@@ -68,8 +68,9 @@ def search_request(search_term):
         except: 
             print('Error on word: %s' % (search_term))
 
-for term in black:
-    slur = term.lower()
-    search_request(slur)
-    print("Results for %s: %s" % (term, len(word)))
+# for term in black:
+#     slur = term.lower()
+#     search_request(slur)
+#     print("Results for %s: %s" % (term, len(word)))
 
+search_request('trump')
