@@ -1,7 +1,9 @@
 import tweepy
 import json
-import keys
+
 from hate_speech1 import race_dict
+# import keys
+
 
 # get keys
 consumer_key = "dhdP8LaOYfkxmxi9Fwde6XtNs"
@@ -34,6 +36,7 @@ num_retweets = []
 num_favorites = []
 in_reply_to = []
 
+
 phrase_list = []
 
 def search_phrase(race):
@@ -55,8 +58,6 @@ def search_phrase(race):
 # def search_phrases(phrase_list):
 #         for entry in phrase_list: 
 #             print(entry)
-
-
 
 def search_request(race_name, search_term):
     page_num = 1
@@ -103,6 +104,7 @@ def search_request(race_name, search_term):
 #     search_request(slur)
 #     print("Results for %s: %s" % (term, len(word)))
 
+
 for key in race_dict.keys():
     search_phrase(key)
     for phrase in phrase_list:
@@ -111,6 +113,7 @@ for key in race_dict.keys():
 # search_request('trump')
 # print(location)
 # print(text)
+
 
 
 # user_location = []
