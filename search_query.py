@@ -2,8 +2,12 @@ import tweepy
 import json
 
 from hate_speech1 import race_dict
+<<<<<<< HEAD
+import pandas as pd
+=======
 # import keys
 
+>>>>>>> fcba6551bea6c926cbacdc988d18d8a41a6ef3f1
 
 # get keys
 consumer_key = "dhdP8LaOYfkxmxi9Fwde6XtNs"
@@ -65,10 +69,11 @@ def search_request(race_name, search_term):
         if x == 0:
             end_id = None
         try: #-filter:retweets   #and (not tweet["retweeted"]) and ("RT" not in tweet["text"]) REMOVE RETWEET DUPLICATES
-            response = api.search(search_term, lang = "en", count = 100, max_id = end_id, geocode="39.82,-98.57,1500mi")['statuses']
+            response = api.search(search_term, lang = "en", count = 100, max_id = end_id) #geocode="39.82,-98.57,1500mi")['statuses']
             for tweet in response:
                 tweet_text = tweet['text']
-                if (search_term in tweet_text and "RT" not in tweet_text): #
+                if ("RT" not in tweet_text): 
+                    print('Success 1')
                     race_list.append(race_name)
                     phrase.append(search_term)
                     time.append(tweet['created_at'])
@@ -92,6 +97,7 @@ def search_request(race_name, search_term):
                     num_retweets.append(tweet['retweet_count'])
                     num_favorites.append(tweet["favorite_count"])  
                     in_reply_to.append(tweet["in_reply_to_user_id"]) 
+                    print('Success 2!')
             end_id = response[-1]['id'] - 1
             print("Search Results Found for %s: page # %s" % (search_term, page_num))
         except: 
@@ -104,15 +110,29 @@ def search_request(race_name, search_term):
 #     search_request(slur)
 #     print("Results for %s: %s" % (term, len(word)))
 
+<<<<<<< HEAD
+# for key in race_dict.keys():
+#     print(key)
+#     search_phrase(key)
+#     print(phrase_list)
+#     for phrase in phrase_list:
+#         search_request(key, phrase)
+#         phrase_list = []
+=======
 
 for key in race_dict.keys():
     search_phrase(key)
     for phrase in phrase_list:
         search_request(key, phrase)
+>>>>>>> fcba6551bea6c926cbacdc988d18d8a41a6ef3f1
 
-# search_request('trump')
-# print(location)
-# print(text)
+search_request('black', 'i hate black')
+print(location)
+print(race_list)
+for n in text:
+    print(n)
+print(location)
+print(text)
 
 
 
@@ -134,6 +154,28 @@ for key in race_dict.keys():
 
 
 # user_location()
+
+racist_df = pd.DataFrame({
+    #"race": race_list,
+    "phrase": phrase,
+    "time": time,
+    "tweet": text,
+    "# of hastags": num_hashtags,
+    "# of mentions": num_user_mentions,
+    "screen name": screen_name,
+    "user id": user_id,
+    "name": name,
+    "account creation date": account_creation_time,
+    "number of account tweets": user_tweet_count,
+    "location": location,
+    "# followers": num_followers,
+    "# following": num_following,
+    "# retweets of tweet": num_retweets,
+    "# favorite of tweet": num_favorites,
+    "in reply to": in_reply_to
+})
+
+racist_df.head()
 
 # print(user_location)
 # print(profile_location)
