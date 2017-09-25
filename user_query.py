@@ -1,13 +1,13 @@
 import tweepy
 import json
-import keys
+# import keys
 from racist_terms import black
 
 # get keys
-consumer_key = keys.CONSUMER_KEY
-consumer_secret = keys.CONSUMER_SECRET
-access_token = keys.ACCESS_TOKEN
-access_token_secret = keys.ACCESS_SECRET
+consumer_key = "YcSWh2b8K7GYGOjRePhbFicPg"
+consumer_secret = "HaMix0UmqHggYDcbF4uEiA9J4UluiiKGNTdr2PgicGzEYQI3Ns"
+access_token = "503080507-PHn1HQtclSxSBvindsRHZNWV0BAr8Br6ELuRAW2x"
+access_token_secret = "mp1vP93iw7lEVmKwqbwHvsbM05VfqRCAoZRFI9BQXJe7T"
 
 #autheticate
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)

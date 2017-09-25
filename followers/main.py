@@ -12,31 +12,43 @@ access_token_secret = "mp1vP93iw7lEVmKwqbwHvsbM05VfqRCAoZRFI9BQXJe7T"
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, parser=tweepy.parsers.JSONParser(), wait_on_rate_limit = True, wait_on_rate_limit_notify = True)
-
-
-
 # ------------------
 
-# List of users we want to see if our matched people also follow
+# # List of users we want to see if our matched people also follow
 popFollowing = ['reuters', 'nytimes','washingtonpost', 'buzzfeednews',
 			'cnn','realdonaldtrump', 'berniesanders','hillaryclinton',
 			'foxnews', 'breitbartnews','seanhannity', 'mike_pence' ]
 
-# test name
-screen_name = "CNN"
+# test list:
+screen_name = ["mewriah", "strangerloops"]
 
-# Get all user id's following a specified user
-followers_id = api.friends_ids(screen_name)
+# put followers into a list
+followers = []
 
-# Loop through all tweets and get the ID's of users
-for tweet in followers_id['ids'][0:5]:
-	##Utilize JSON dumps to generate a pretty-printed json of 
-	# print(json.dumps(tweet, sort_keys=True, indent=4, separators=(',', ': ')))
+# loop through screen names given. ie: screen_name
+for name in screen_name:
+	# target given name in the screen names list
+	followers_id = api.friends_ids(name)
 
-	# get the twitter screen name from the id input
-	screen_name_from_id = api.get_user(tweet)
+	# Loop through all tweets from a given list and get the ID's of users
+	for tweet in followers_id['ids']:
 
-	# Prints the screen name from the ID loop
-	print(screen_name_from_id["screen_name"])
+		##Utilize JSON dumps to generate a pretty-printed json of 
+		# print(json.dumps(tweet, sort_keys=True, indent=4, separators=(',', ': ')))
+
+		# convert the twitter id to a screen name by inputing ID into .get_user api
+		screen_name_from_id = api.get_user(tweet)
+
+		if(screen_name_from_id["followers_count"] > 10000):
+			# Prints the screen name from the ID loop 
+			print(screen_name_from_id["screen_name"])
+			print(screen_name_from_id["followers_count"])
+
+			#append to list of followers
+			followers.append(screen_name_from_id["screen_name"])
+
+	print(len(followers))
 
 
+# can do a breakdown to see if these followers match specified accounts
+# if they have x number of followers
