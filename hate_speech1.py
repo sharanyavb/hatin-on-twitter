@@ -14,9 +14,9 @@
 # phrase3 = 'i hate ' + race
 # phrase4 = 'i hate all ' + race,
 # phrase5 = 'down with the ' + race
-race_dict = {"black": ["black", "nigger", "jigaboo", "coon", "spook", "porch monkey", "spade"],
-'jews': ['jews', 'christ killer', 'hebrew', 'heeb', 'hebe', 'kike', 'jew-bag', 'yid'],
-'muslim': ['muslim', 'sand nigger', 'towel head', 'rag head'] }
+race_dict = {"black": ["jigaboo", "coon", "spook", "porch monkey", "spade"],
+'jews': ['jews', 'christ killer', 'hebrew', 'heeb', 'hebe', 'kike', 'jew-bag', 'jew bag', 'yid'],
+'muslim': ['muslim', 'sand-nigger', 'towel-head', 'rag-head', 'sand nigger', 'towel head', 'rag head', 'sandnigger', 'towelhead', 'raghead'] }
 
 
 # for key, value in race_dict.items():
