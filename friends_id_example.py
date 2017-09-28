@@ -22,9 +22,9 @@ def find_friends(user_id):
         response = api.friends_ids(id = user_id, cursor = cursor_num)
         ###needs code for gathering friend info###
         # response[0]['ids']
-        response_pretty = json.dumps(response, indent = 4, sort_keys=False)
-        print(response_pretty)
-        print(response[0]['next_cursor'])
+        #response_pretty = json.dumps(response, indent = 4, sort_keys=False)
+        #print(response_pretty)
+        #print(response[0]['next_cursor'])
         cursor_num = response[0]['next_cursor']
         if cursor_num == 0:
             more_friends = False
