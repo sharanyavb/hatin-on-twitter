@@ -16,10 +16,10 @@ import matplotlib.pyplot as mpl
 # In[2]:
 
 # Twitter API Keys
-consumer_key = "hPkHUhPewDNFO0lTRxdjNQcCq"
-consumer_secret = "4zXb0IC2H7hlwi6hbLZZqL9SxNwSFVzgHQwSEFQRYmvZU2I065"
-access_token = "503080507-8R12ROrWr4Z4h1J4Qk5iJwM6wfjdRPKcywRi1xo5"
-access_token_secret = "1qCDo8yozpAFeDIkvmpzURQy5rho3SxdtY7EHnzeUQGor"
+consumer_key = "VCuF4m5BOV8VCgOMmhIBhRdkH"
+consumer_secret = "98GU94zs8TQZExBmsZEg4s35FaZYa14X89TvH4u38caHUopKQ7"
+access_token = "503080507-AMfQkcbiYn4qGEM9QtXDKMnfRVEmeRqwkproMjf5"
+access_token_secret = "vNWqBPsao8s0bc6voLKQFPe2jph5CmdwHWLmi0HMcHzwG"
 
 # Setup Tweepy API Authentication
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -31,7 +31,7 @@ api = tweepy.API(auth, parser=tweepy.parsers.JSONParser(), wait_on_rate_limit = 
 
 # In[3]:
 
-twitter_act = '../filtered_results.csv'
+twitter_act = '../unique_users.csv'
 screen_name = pd.read_csv(twitter_act)
 
 # screen_name = ["mewriah"] #also works if you add multiple twitter names to check
@@ -47,10 +47,10 @@ individual_screen_name
 # 
 # 
 
-# In[4]:
+# In[ ]:
 
 # loop through screen names given. ie: screen_name
-for name in individual_screen_name[2100:2646]:
+for name in individual_screen_name[150:301]:
     try:
         # targets given name in the screen names list
         followers_id = api.friends_ids(name)
@@ -69,7 +69,7 @@ for name in individual_screen_name[2100:2646]:
 
 # # Data Frame: Top Followers from test list
 
-# In[5]:
+# In[ ]:
 
 topFollowers = pd.DataFrame(
         {   "User": followers,
@@ -90,11 +90,16 @@ new_topFollowers.index.value_counts()
 
 # # Mutual Follower Frequency
 
-# In[6]:
+# In[ ]:
 
 # get number of occurances of each user
 popular_follow = new_topFollowers.index.value_counts().to_frame().reset_index()
 popular_follow.head(15)
 
-popular_follow.to_csv('follower_frequency2650.csv', index=False)
+popular_follow.to_csv('short_follower_frequency300.csv', index=False)
+
+
+# In[ ]:
+
+
 

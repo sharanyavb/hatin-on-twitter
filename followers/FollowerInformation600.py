@@ -3,7 +3,7 @@
 
 # # Dependencies
 
-# In[ ]:
+# In[1]:
 
 import tweepy
 import json
@@ -13,13 +13,13 @@ import matplotlib.pyplot as mpl
 
 # # Twitter API Keys & Auth
 
-# In[ ]:
+# In[2]:
 
 # Twitter API Keys
-consumer_key = "TMmoNF4ShPaG4MpftsiHGbx50"
-consumer_secret = "S4yUU9Efd3ZTS7B7j3tyPcRf2QYIZtyiAGJ3pTmU7D7fiecROy"
-access_token = "503080507-mGl2xweaoTaAnkleYsXWQL4vIKwHe6tPdhMbXMbx"
-access_token_secret = "jm9HkG3SLrSjho5I4lanfCaZX8MVtO0bcI1RWbRcWiDWi"
+consumer_key = "mZxf6FXUK9RcTKGhDWXsjGtQE"
+consumer_secret = "59zVH1ZGgnq03hEySq7PciRqRVlQi89Oz2qrJab57BlLmuQNI1"
+access_token = "503080507-cWXD2PNPVAMqIggSjte6LRZcnHKTdwv9GjL9Bn59"
+access_token_secret = "r4aGrGcZEbXOg5xy7XiYdOacZcVuMAqygajlyLuiGAfuA"
 
 # Setup Tweepy API Authentication
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -29,9 +29,9 @@ api = tweepy.API(auth, parser=tweepy.parsers.JSONParser(), wait_on_rate_limit = 
 
 # ## Test Information
 
-# In[ ]:
+# In[3]:
 
-twitter_act = '../filtered_results.csv'
+twitter_act = '../unique_users.csv'
 screen_name = pd.read_csv(twitter_act)
 
 # screen_name = ["mewriah"] #also works if you add multiple twitter names to check
@@ -50,7 +50,7 @@ individual_screen_name
 # In[ ]:
 
 # loop through screen names given. ie: screen_name
-for name in individual_screen_name[100:601]:
+for name in individual_screen_name[300:601]:
     try:
         # targets given name in the screen names list
         followers_id = api.friends_ids(name)
@@ -96,7 +96,7 @@ new_topFollowers.index.value_counts()
 popular_follow = new_topFollowers.index.value_counts().to_frame().reset_index()
 popular_follow.head(15)
 
-popular_follow.to_csv('follower_frequency600.csv', index=False)
+popular_follow.to_csv('short_follower_frequency600.csv', index=False)
 
 
 # In[ ]:
